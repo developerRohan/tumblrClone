@@ -1,0 +1,9 @@
+<div class="comment clearfix">
+	<% post_comments.each do |comment| %>
+		<div class="comment_content">
+			<p class="comment_name"><em><%= comment.name %></em></p>
+			<p class="comment_body"> <%= comment.body %></p>
+			<p class="comment_title"><%= time_ago_in_words(comment.created_at )%> ago</p>
+		</div>	
+	<% end %>
+</div>

@@ -2,8 +2,24 @@
 <%= @post.title %>
 </h1>
 <p class="date">
-	Submitted <%= time_ago_in_words(@post.created_at) %> ago
+	<small>Submitted <%= time_ago_in_words(@post.created_at) %> ago</small>
 </p>
 <p class="body">
 	<%= @post.body %>
 </p>
+<div class="buttons space">
+  	<button class="button"><%= link_to "editPost" , edit_post_path(@post) %></button>
+  	<button class="button"><%= link_to "deletePost" ,post_path(@post) , method: :delete , data: {confirm: 'Are you sure'} %></button>
+
+
+</div>
+<div id ="comments">
+	<h2>
+		<%= @post.comments.count %> comments
+	</h2>
+	<%= render "comments/comment" ,:post_comments => @post.comments.order('created_at DESC') %>
+	<h3>
+		Join Discussion
+	</h3>
+	<%= render "comments/form" %>
+</div>
